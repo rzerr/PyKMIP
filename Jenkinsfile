@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Run container from image') {
             steps {
-                sh 'sudo podman run -d -p 80:5696 -p 443:5696 -v /mnt:/tmp:Z --name container-$BUILD_NUMBER localhost/image-$BUILD_NUMBER'
+                sh 'sudo podman run -d -p 80:5696 -p 443:5696 -v /mnt:/tmp:Z --name container-$BUILD_NUMBER -e MASTER_KEY='key' -e HOST_KEY='host' localhost/image-$BUILD_NUMBER'
             }
         }
     }

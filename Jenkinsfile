@@ -3,7 +3,7 @@ pipeline {
     stages { 
         stage('SCM') {
             steps{
-                git credentialsId: 'github', url: 'https://github.com/rzerr/PyKMIP'
+            	git credentialsId: 'github', url: 'https://github.com/rzerr/PyKMIP'
             }
          }
          stage('SonarQube Analysis') {
@@ -26,10 +26,10 @@ pipeline {
                 }
             }
         }
-	    stage('Build Docker image') {
-            steps {
-                sh 'sudo docker pull ubuntu:latest'
-                sh 'sudo docker build -t image-$BUILD_NUMBER .'
+	stage('Build Docker image') {
+     		steps {
+                	sh 'sudo docker pull ubuntu:latest'
+                	sh 'sudo docker build -t image-$BUILD_NUMBER .'
             }
         }
         stage('Run container from image') {

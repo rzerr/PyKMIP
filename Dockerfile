@@ -25,7 +25,7 @@ RUN pip3 install -r pip-packages.txt
 RUN git clone https://github.com/rzerr/PyKMIP.git
 
 # set directory to python app directory
-WORKDIR /code/pykmip
+WORKDIR /code/PyKMIP
 
 #build the python application
 RUN python3 setup.py install
@@ -41,4 +41,4 @@ RUN openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /code/selfsigne
  /code/selfsigned.crt -subj "/C=SG/ST=Singapore/L=Singapore/O=local/CN=www.example.com"
 
 # command to run on container start
-CMD [ "/usr/bin/python3", "pykmip/bin/run_server.py","-f" , "server.conf" ]
+CMD [ "/usr/bin/python3", "PyKMIP/bin/run_server.py","-f" , "server.conf" ]

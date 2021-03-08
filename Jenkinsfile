@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages { 
-#        stage('SCM') {
-#            steps{
-#            	git credentialsId: 'github', url: 'https://github.com/rzerr/PyKMIP'
-#            }
-#         }
          stage('SonarQube Analysis') {
             environment {
                 scannerHome = tool 'SonarQubeScanner'

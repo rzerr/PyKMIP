@@ -33,8 +33,12 @@ pipeline {
             }
         }
         stage('Run container from image') {
-            steps {
-                sh 'sudo podman run -d -p 80:5696 -p 443:5696 -v /mnt:/tmp:Z --name container-$BUILD_NUMBER -e MASTER_KEY="key" -e HOST_KEY="host" localhost/image-$BUILD_NUMBER'
+		environment {
+			MASTER_KEY = credentials('MASTER_KEY')
+			HOST_KEY = credentials('HOST_KEY')
+		}
+            	steps {
+                	sh 'sudo podman run -d -p 80:5696 -p 443:5696 -v /mnt:/tmp:Z --name container-$BUILD_NUMBER -e MASTER_KEY=$MASTER_KEY -e HOST_KEY=$HOST_KEY localhost/image-$BUILD_NUMBER'
             }
         }
     }

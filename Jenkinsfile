@@ -33,7 +33,7 @@ pipeline {
 			HOST_KEY = credentials('HOST_KEY')
 		}
             	steps {
-                	sh 'sudo podman run -d -p 8080:80 -p 4043:443 -v /mnt:/tmp:Z --name container-$BUILD_NUMBER -e MASTER_KEY="$MASTER_KEY" -e HOST_KEY="$HOST_KEY" localhost/image-$BUILD_NUMBER'
+                	sh 'sudo podman run -d -p 8880:80 -p 4043:443 -v /mnt:/tmp:Z --name container-$BUILD_NUMBER -e MASTER_KEY="$MASTER_KEY" -e HOST_KEY="$HOST_KEY" localhost/image-$BUILD_NUMBER'
             }
         }
     }
